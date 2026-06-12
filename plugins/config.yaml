@@ -1,0 +1,12 @@
+plugins:
+    - name: calculator
+      enabled: true
+      config:
+        max_precision: 8
+    - name: ai
+      enabled: true
+      config:
+        llm_api_key: sk-xxxxxxx
+        llm_url: https://api.deepseek.com/chat/completions
+        max_tokens: 2048
+        model: deepseek-v4-pro

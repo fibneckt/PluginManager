@@ -118,7 +118,7 @@ go run main.go
 PluginManager ready. Type /help for commands.
 > /plugins
 > /send calculator {"op":"add","a":1,"b":2}
-> /send calculator {"op":"multiply","a":7,"b":8} ai {"messages":[{"role":"user","content":"你好"}]} 
+> /send calculator {"op":"multiply","a":7,"b":8} ai {"messages":[{"role":"user","content":"你好"}]} // api-key 需额外配置 
 > /sendall {"op":"add","a":1,"b":2}
 > /quit
 ```

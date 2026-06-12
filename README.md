@@ -123,28 +123,6 @@ PluginManager ready. Type /help for commands.
 > /quit
 ```
 
-## 进阶设计想法（未实现部分）
-
-### 热加载
-
-当前插件在 `init()` 中注册，生命周期与进程绑定。要实现运行时热加载，可考虑：
-
-- **Go 插件机制**（`plugin` 包）：将插件编译为 `.so` 文件，运行时通过 `plugin.Open()` 动态加载，但受限于编译器版本一致性
-
-### 插件间数据传递（顺序执行 / Pipeline）
-
-当前设计为并行扇出模型。要支持顺序 Pipeline：
-
-- 定义 `Pipeline` 结构，描述插件执行顺序和输入输出映射关系
-- 前一个插件的 `Output` map 作为下一个插件的 `Input` data
-- 可由 YAML 配置描述 Pipeline DAG
-
-### 超时控制与资源限制
-
-- 在 `worker()` 中对 `plugin.Run()` 加 `context.WithTimeout`，超时取消并标记异常
-- 使用 `rate.Limiter` 或信号量限制单个插件的并发执行数
-- 内存限制可借助 `runtime.SetMemoryLimit`
-
 ## 依赖说明
 
 | 依赖 | 用途 |
